@@ -1,0 +1,15 @@
+# Archivos de NetBeans
+/nbproject/
+/build/
+/dist/
+/.idea/
+
+# Archivos compilados
+*.class
+*.war
+*.jar
+/target/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
