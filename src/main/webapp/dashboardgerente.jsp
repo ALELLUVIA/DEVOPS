@@ -148,19 +148,22 @@
                 try {
                     connProductos = getConnection();
                     
-                    String sqlProductos = "SELECT TOP 3 lote_Producto as lote, nombre_De_Producto as nombre, " +
+                    String sqlProductos = "SELECT lote_Producto as lote, nombre_De_Producto as nombre, " +
                                          "precio_De_Venta as precio, cantidad_En_Stock as stock, " +
                                          "proveedor, departamento, fecha_De_Caducidad as caducidad " +
-                                         "FROM productos ORDER BY fecha_De_Caducidad ASC";
+                                         "FROM productos ORDER BY fecha_De_Caducidad ASC LIMIT 3";
                     
                     Statement stmtProductos = connProductos.createStatement();
                     ResultSet rsProductos = stmtProductos.executeQuery(sqlProductos);
                     
                     while(rsProductos.next()) {
                         java.sql.Date fechaCad = rsProductos.getDate("caducidad");
+                        long diasRestantes = 0;
+                        if(fechaCad != null) {
                         long diff = fechaCad.getTime() - new java.util.Date().getTime();
-                        long diasRestantes = diff / (1000 * 60 * 60 * 24);
-                        String claseFila = diasRestantes <= 7 ? "urgente" : "";
+                        diasRestantes = diff / (1000 * 60 * 60 * 24);
+                        }
+                        String claseFila = (fechaCad != null && diasRestantes <= 7) ? "urgente" : "";
             %>
                 <tr class="<%= claseFila %>">
                     <td><%= rsProductos.getString("lote") %></td>
@@ -214,7 +217,7 @@
                                      "proveedor, departamento, marca_Del_Producto as marca, " +
                                      "fecha_De_Ingreso as ingreso, fecha_De_Caducidad as caducidad, " +
                                      "estado as estado " +
-                                     "FROM productos ORDER BY nombre";
+                                     "FROM productos ORDER BY nombre_De_Producto";
                     
                     Statement stmtTodos = connTodos.createStatement();
                     ResultSet rsTodos = stmtTodos.executeQuery(sqlTodos);

@@ -43,7 +43,7 @@ public class ObtenerProductosServlet extends HttpServlet {
            String password = "LLUVIAalejandra2003";
     
             
-          Connection con = DriverManager.getConnection(url, user, password);
+           conn = DriverManager.getConnection(url, user, password);
             
             // 3. Consulta SQL para obtener todos los productos con fecha de caducidad
             String sql = "SELECT lote_Producto, nombre_De_Producto, fecha_De_Caducidad, "

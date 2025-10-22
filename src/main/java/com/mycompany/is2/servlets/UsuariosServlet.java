@@ -69,7 +69,7 @@ private static final String PASS = "LLUVIAalejandra2003";
 
             if ("insert".equals(action)) {
                 // Insertar nuevo usuario
-                String sql = "INSERT INTO usuarios (nombre_De_Usuario, contraseña, rol, fecha_De_Alta) VALUES (?, ?, ?, GETDATE())";
+                String sql = "INSERT INTO usuarios (nombre_De_Usuario, contraseña, rol, fecha_De_Alta) VALUES (?, ?, ?, NOW())";                    
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, username);
                 pstmt.setString(2, password);
@@ -108,8 +108,8 @@ private static final String PASS = "LLUVIAalejandra2003";
         } catch (SQLException e) {
             String errorMsg = e.getMessage();
             // Detectar error por clave duplicada
-            if (errorMsg.contains("Violation of UNIQUE KEY constraint") || errorMsg.toLowerCase().contains("duplicate key")) {
-                response.sendRedirect("UsuariosGerente.jsp?status=error&message=El nombre de usuario '" + username + "' ya esta registrado. Intenta con otro.");
+            if (errorMsg.toLowerCase().contains("duplicate entry")) {
+            response.sendRedirect("UsuariosGerente.jsp?status=error&message=El nombre de usuario '" + username + "' ya esta registrado. Intenta con otro.");
             } else {
                 response.sendRedirect("UsuariosGerente.jsp?status=error&message=Error en la operación: " + errorMsg);
             }

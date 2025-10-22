@@ -42,8 +42,8 @@ private static final String PASS = "LLUVIAalejandra2003";
             conn = getConnection();
             
             if ("add".equals(action)) {
-                String sql = "INSERT INTO usuarios (nombre_De_Usuario, contraseña, rol, fecha_De_Alta) VALUES (?, ?, ?, GETDATE())";
-                pstmt = conn.prepareStatement(sql);
+                String sql = "INSERT INTO usuarios (nombre_De_Usuario, contraseña, rol, fecha_De_Alta) VALUES (?, ?, ?, CURDATE())";                pstmt = conn.prepareStatement(sql);
+                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, username);
                 pstmt.setString(2, password);
                 pstmt.setString(3, role);
