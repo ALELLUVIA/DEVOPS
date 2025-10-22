@@ -13,10 +13,10 @@ import jakarta.servlet.http.*;
 @WebServlet(name = "gerenteServlet", urlPatterns = {"/gerenteServlet"})
 public class gerenteServlet extends HttpServlet {
     
-    private static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-private static final String DB_URL = "jdbc:sqlserver://10.0.41.203:1433;databaseName=ITEMCONTROL;encrypt=true;trustServerCertificate=true";
-     private static final String USER = "sa";
-private static final String PASS = "ale-per123";
+ private static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
+private static final String DB_URL = "jdbc:mysql://localhost:3306/ITEMCONTROL?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+private static final String USER = "root";
+private static final String PASS = "LLUVIAalejandra2003";
 
 
     private Connection getConnection() throws SQLException, ClassNotFoundException {

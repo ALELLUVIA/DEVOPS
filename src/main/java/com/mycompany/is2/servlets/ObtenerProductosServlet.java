@@ -35,17 +35,15 @@ public class ObtenerProductosServlet extends HttpServlet {
         
         try {
             // 1. Cargar el driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
             // 2. Establecer conexión
-            String connectionUrl = "jdbc:sqlserver://10.0.41.203:1433;"
-                    + "databaseName=ITEMCONTROL;"
-                    + "encrypt=true;"
-                    + "trustServerCertificate=true;"
-                    + "user=sa;"
-                    + "password=ale-per123";
+           String url = "jdbc:mysql://localhost:3306/ITEMCONTROL?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+           String user = "root";
+           String password = "LLUVIAalejandra2003";
+    
             
-            conn = DriverManager.getConnection(connectionUrl);
+          Connection con = DriverManager.getConnection(url, user, password);
             
             // 3. Consulta SQL para obtener todos los productos con fecha de caducidad
             String sql = "SELECT lote_Producto, nombre_De_Producto, fecha_De_Caducidad, "

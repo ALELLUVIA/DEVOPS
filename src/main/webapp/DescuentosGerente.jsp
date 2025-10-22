@@ -246,10 +246,11 @@
                <%
     Connection conn = null;
     try {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         conn = DriverManager.getConnection(
-    "jdbc:sqlserver://10.0.41.203:1433;databaseName=ITEMCONTROL;encrypt=true;trustServerCertificate=true",
-    "sa", "ale-per123");
+        "jdbc:mysql://localhost:3306/ITEMCONTROL?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true", 
+        "root", 
+        "LLUVIAalejandra2003");
         String sql = "SELECT id_Promocion, porcentaje_De_Descuento, fecha_De_inicio, fecha_De_Fin, estado FROM promociones";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);

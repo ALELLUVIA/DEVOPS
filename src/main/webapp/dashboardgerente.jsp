@@ -117,14 +117,14 @@
         
         <%! 
             private Connection getConnection() throws SQLException, ClassNotFoundException {
-                String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-                String url = "jdbc:sqlserver://10.0.41.203:1433;databaseName=ITEMCONTROL;encrypt=true;trustServerCertificate=true";
-                String user = "sa";
-                String pass = "ale-per123";
-                
-                Class.forName(driver);
-                return DriverManager.getConnection(url, user, pass);
-            }
+    String driver = "com.mysql.cj.jdbc.Driver";
+    String url = "jdbc:mysql://localhost:3306/ITEMCONTROL?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    String user = "root";
+    String pass = "LLUVIAalejandra2003";
+    
+    Class.forName(driver);
+    return DriverManager.getConnection(url, user, pass);
+}
         %>
         
         <!-- Sección de Productos Próximos a Caducar -->

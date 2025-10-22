@@ -354,10 +354,11 @@
                         <%
                             Connection conn = null;
                             try {
-                                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                                conn = DriverManager.getConnection(
-    "jdbc:sqlserver://10.0.41.203:1433;databaseName=ITEMCONTROL;encrypt=true;trustServerCertificate=true",
-    "sa", "ale-per123");
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                            conn = DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/ITEMCONTROL?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true", 
+        "root", 
+        "LLUVIAalejandra2003");
                         
                                 // Obtener fecha actual y fecha límite (7 días después)
                                 java.util.Date today = new java.util.Date();
